@@ -7,29 +7,47 @@
              mc:Ignorable="d" 
              SizeToContent="WidthAndHeight"
              MinWidth="300"
-             Title="Скрыть категорию на виде">
+             Title="Создание листов">
     <StackPanel>
-        <Label Content="Выбрать вид"
+        <Label Content="Выбрать Основных надписей"
                Margin="5"/>
-        <ComboBox ItemsSource="{Binding Views}"
+        <ListBox ItemsSource="{Binding SelectedTitleBlock}"
+                 SelectionMode="Extended"
+                 DisplayMemberPath="Name"
+                 MaxHeight="200"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="IsSelected"
+                            Value="{Binding IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <Label Content="Количество листов"
+               Margin="5"/>
+        <TextBox Text="{Binding ParameterName}"
+                 Margin="5"/>
+        <Button Content="Создать"
+               Command="{Binding Create}"
+               Margin="5"
+               Padding="5"/>
+        <!--<ComboBox ItemsSource="{Binding Views}"
                   SelectedValue="{Binding SelectedViewPlan}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
-        <Label Content="Выбрать категорию"
+        <Label Content="Выбрать фильтр"
                Margin="5"/>
-        <ComboBox ItemsSource="{Binding Categories}"
-                  SelectedValue="{Binding SelectedCategory}"
+        <ComboBox ItemsSource="{Binding Filters}"
+                  SelectedValue="{Binding SelectedFilter}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
 
-        <Button Content="Скрыть категорию"
-                Command="{Binding HideCommand}"
+        <Button Content="Добавить фильтр"
+                Command="{Binding AddFilterCommand}"
                 Margin="5"
-                Padding="5"/>
-        <Button Content="Временное скрытие"
-                Command="{Binding TempHideCommand}"
-                Margin="5"
-                Padding="5"/>
+                Padding="5"/>-->
 
     </StackPanel>
 </Window>
